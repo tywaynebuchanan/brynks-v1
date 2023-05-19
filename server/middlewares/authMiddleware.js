@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const ErrorHandler = require("./errorHandler")
 
 module.exports.checkUser = (req, res, next) => {
-  const token = req.cookies.jwt;
+  const token = req.cookies.jwt || req.body.token || req.headers['x-access-token']
   if (token) {
     jwt.verify(
       token,

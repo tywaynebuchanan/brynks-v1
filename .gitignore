@@ -5,4 +5,4 @@ client/yarn.lock
 server/yarn.lock
 
 .env
-*.md
+
