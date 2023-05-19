@@ -31,6 +31,7 @@ const ProtectedRoutes = ({children}) => {
 				if (!data.status) {
 					removeCookie("jwt")
 					navigate("/login")
+					message.error("You have been logged out")
 				} else {
 					dispatch(SetUser(data.user))
 					console.log(data.user)

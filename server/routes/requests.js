@@ -3,7 +3,7 @@ const {getAllRequests,SendRequests,UpdateStatus} = require("../controllers/reque
 const router = express.Router()
 
 router.post("/get-requests",getAllRequests)
-router.post("/send-request",SendRequests)
+router.post("/send-requests",SendRequests)
 router.post("/update-status",UpdateStatus)
 
 module.exports = router

@@ -1,6 +1,7 @@
 const User = require("../model/usersModel")
 const jwt = require("jsonwebtoken")
 const ErrorHandler = require("../middlewares/errorHandler")
+const bcrypt = require("bcrypt")
 
 const maxAge = 3 * 24 * 60 * 60
 const createToken = id => {

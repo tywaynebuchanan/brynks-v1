@@ -7,11 +7,15 @@ const privateClient = axios.create({
 })
 
 privateClient.interceptors.request.use(async config =>{
+    //  const token = document.cookie
+    // .split("; ")
+    // .find((row) => row.startsWith("jwt="))
+    // .split("=")[1];
     return {
         ...config,
         headers:{
             "Content-Type": "application/json",
-            // "Authorization": `Bearer ${token}`,
+            //  "Authorization": `Bearer ${token}`,
             "Access-Controll-Allow-Origin": "*",
 
         },

@@ -1,7 +1,7 @@
 import React, {Fragment} from "react"
 import {Col, Row, Form, message,Checkbox} from "antd"
 import {Link, useNavigate} from "react-router-dom"
-import {getter,setter,userEndpoints} from  "../../api/users"
+import {getter,setter,setterPublic,userEndpoints} from  "../../api/users"
 import {useDispatch} from "react-redux"
 import {ShowLoading} from "../../redux/loaderSlice"
 import {HideLoading} from "../../redux/loaderSlice"
@@ -13,7 +13,7 @@ const ResetPassword = () => {
 	const onFinish = async values => {
 		try {
 			dispatch(ShowLoading())
-			const res = await setter(userEndpoints.resetPassword,values)
+			const res = await setterPublic(userEndpoints.resetPassword,values)
 			dispatch(HideLoading())
 			if (res.success) {
 				console.log(res.msg)

@@ -44,7 +44,7 @@ export const setter = async(endpoints,request)=>{
 
 export const setterPublic = async(endpoints,request)=>{
     try {
-        const {data} = await privateClient.post(`${endpoints}`,request)
+        const {data} = await publicClient.post(`${endpoints}`,request)
         return data
     } catch (error) {
          return error.response.data

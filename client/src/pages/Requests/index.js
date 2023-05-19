@@ -48,7 +48,7 @@ const Requests = () => {
 				return
 			} else {
 				dispatch(ShowLoading)
-				const response = await setter(endpoints.update({...record, status}))
+				const response = await setter(endpoints.update,{...record, status})
 				dispatch(HideLoading)
 				console.log(response)
 				if (response.success) {

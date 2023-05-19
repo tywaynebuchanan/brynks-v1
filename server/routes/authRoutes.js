@@ -17,16 +17,7 @@ router.post("/auth/password",checkUser, changePassword)
 router.post("/auth/email-forgot-password", ResetPasswordByEmail)
 
 router.get("/auth/admin/users", getUsers)
-router.post(
-	"/auth/admin/verify-user",
-	authorizedRoles("admin"),
-	updateUserStatus
-)
-router.post(
-	"/auth/admin/reset-user-password",
-	checkUser,
-	authorizedRoles("admin"),
-	changePasswordByAdmin
-)
+router.post("/auth/admin/verify-user",authorizedRoles("admin"),updateUserStatus)
+router.post("/auth/admin/reset-user-password",authorizedRoles("admin"),changePasswordByAdmin)
 
 module.exports = router;
