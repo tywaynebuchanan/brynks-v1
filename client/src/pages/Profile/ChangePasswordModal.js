@@ -1,6 +1,6 @@
 import React from "react"
-import {Form, Modal, message, Input} from "antd"
-import {getter,setter,userEndpoints} from "../../api/users"
+import {Form, Modal, message} from "antd"
+import {setter,userEndpoints} from "../../api/users"
 import {useDispatch} from "react-redux"
 import {ShowLoading, HideLoading} from "../../redux/loaderSlice"
 

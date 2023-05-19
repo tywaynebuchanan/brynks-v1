@@ -21,8 +21,8 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/register" element={<Register />} />
-        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/register" element={<PublicRoute><Register /></PublicRoute>} />
+        <Route exact path="/login" element={<PublicRoute><Login /></PublicRoute>} />
         <Route exact path="/" element={<ProtectedRoutes><Dashboard /></ProtectedRoutes>} />
         <Route exact path="/profile" element={<ProtectedRoutes><Profile/></ProtectedRoutes>} />
         <Route exact path="/users" element={<ProtectedRoutes><Users/></ProtectedRoutes>} />

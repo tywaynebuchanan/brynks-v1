@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import {useSelector} from "react-redux"
-import {Link, useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import {message} from "antd"
 import {useCookies} from "react-cookie"
 import Logo from "../assets/logo-black.png"
@@ -33,15 +33,6 @@ const DefaultLayout = ({children}) => {
 			onClick: () => navigate("/profile"),
 			path: "/profile",
 		},
-		//  {
-		//     title:"Logout",
-		//     icon: <i class="ri-logout-box-line"></i>,
-		//     onClick: ()=>{
-		//         localStorage.removeItem("token")
-		//         navigate("/login");
-		//         },
-		//     path: "/login"
-		// },
 	]
 
 	const adminMenu = [
@@ -86,13 +77,11 @@ const DefaultLayout = ({children}) => {
 		//     path: "/login"
 		// },
 	]
-	const [cookies, setCookie, removeCookie] = useCookies()
-	const token = cookies.jwt
+	const [removeCookie] = useCookies()
 	const Logout = () => {
 		removeCookie('jwt');
         navigate("/login")
 		message.success("You have been logged out")
-		
 	}
 
 	const [show, setShow] = useState(false)

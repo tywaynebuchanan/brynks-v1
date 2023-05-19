@@ -1,8 +1,7 @@
-import React, { Fragment,useState, useEffect } from "react";
-import {Col, Row, Form, message, Checkbox} from "antd"
+import React, { Fragment,useEffect } from "react";
+import {Col, Row, Form, message,} from "antd"
 import {useNavigate} from "react-router-dom"
-import axiosInstance from "../../api/private.api"
-import { userEndpoints,getter,setter } from "../../api/users";
+import { userEndpoints,setter } from "../../api/users";
 import {useCookies} from "react-cookie"
 import Logo from "../../assets/logo-black.png"
 

@@ -1,53 +1,52 @@
-import {useState, useEffect, useReducer} from "react"
-import {message} from "antd"
-import {getter, setter, userEndpoints} from "../api/users"
-import {useNavigate} from "react-router-dom"
-import {useDispatch, useSelector} from "react-redux"
-import {SetUser, ReloadUser} from "../redux/usersSlice"
-import {ShowLoading, HideLoading} from "../redux/loaderSlice"
-import {useCookies} from "react-cookie"
-import DefaultLayout from "./DefaultLayout"
-import axios from "axios"
+import { useEffect } from "react";
+import { message } from "antd";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { SetUser } from "../redux/usersSlice";
+import { ShowLoading, HideLoading } from "../redux/loaderSlice";
+import { useCookies } from "react-cookie";
+import DefaultLayout from "./DefaultLayout";
+import axios from "axios";
 
-const ProtectedRoutes = ({children}) => {
-	const navigate = useNavigate()
-	const [cookies, setCookie, removeCookie] = useCookies([])
-	const {user, reloadUser} = useSelector(state => state.users)
-	const dispatch = useDispatch()
-	const token = cookies.jwt
+const ProtectedRoutes = ({ children }) => {
+  const navigate = useNavigate();
+  const [cookies, removeCookie] = useCookies([]);
+  const { user } = useSelector((state) => state.users);
+  const dispatch = useDispatch();
 
-	useEffect(() => {
-		const verifyUser = async () => {
-			if (!cookies.jwt) {
-				navigate("/login")
-			} else {
-				const {data} = await axios.post(
-					"http://localhost:5000/api",
-					{},
-					{
-						withCredentials: true,
-					}
-				)
-				if (!data.status) {
-					removeCookie("jwt")
-					navigate("/login")
-					message.error("You have been logged out")
-				} else {
-					dispatch(SetUser(data.user))
-					console.log(data.user)
-				}
-			}
-		}
-		verifyUser()
-	}, [])
+  useEffect(() => {
+    const verifyUser = async () => {
+      if (!cookies.jwt) {
+        navigate("/login");
+      } else {
+        dispatch(ShowLoading());
+        try {
+          const { data } = await axios.post(
+            "http://localhost:5000/api",
+            {},
+            {
+              withCredentials: true,
+            }
+          );
+          dispatch(HideLoading());
+          if (!data.status) {
+            removeCookie("jwt");
+            navigate("/login");
+            message.error("You have been logged out");
+          } else {
+            dispatch(SetUser(data.user));
+            console.log(data.user);
+          }
+        } catch (error) {
+          dispatch(HideLoading());
+          message.error("An error occurred. Please try again.");
+        }
+      }
+    };
+    verifyUser();
+  }, [cookies.jwt, navigate, removeCookie, dispatch]);
 
-	return (
-		user && (
-			<div>
-				<DefaultLayout>{children}</DefaultLayout>
-			</div>
-		)
-	)
-}
+  return user ? <DefaultLayout>{children}</DefaultLayout> : null;
+};
 
-export default ProtectedRoutes
+export default ProtectedRoutes;

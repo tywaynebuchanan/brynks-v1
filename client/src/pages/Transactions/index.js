@@ -9,7 +9,6 @@ import {useSelector} from "react-redux"
 import {Plus, Minus, Accepted, Rejected} from "../../components/Plus"
 import moment from "moment"
 import DepositModel from "./DepositModal"
-import axios from "axios"
 
 const Transactions = () => {
 

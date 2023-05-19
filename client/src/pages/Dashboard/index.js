@@ -1,19 +1,10 @@
-import React, {Fragment,useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import {user,reloadUser, SetUser} from "../../redux/usersSlice"
-import {getter,setter,userEndpoints} from "../../api/users"
-import {useDispatch, useSelector} from "react-redux"
+import React, {Fragment} from "react";
+import {useSelector} from "react-redux"
 import PageTitle from "../../components/PageTitle"
-import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
-import DefaultLayout from "../../components/DefaultLayout";
+
 
 const Dashboard =()=> {
-  const navigate = useNavigate();
-  const dispatch = useDispatch()
   const {user} = useSelector(state=>state.users)
-
- 
 	return (
 			<Fragment>
 			<div className='flex justify-between items-center'>

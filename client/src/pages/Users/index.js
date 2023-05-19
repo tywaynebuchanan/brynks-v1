@@ -2,7 +2,7 @@ import React, {Fragment, useEffect, useState} from "react"
 import PageTitle from "../../components/PageTitle"
 import {Table, message} from "antd"
 import moment from "moment"
-import {getter, getterPublic, setter, setterPublic, userEndpoints} from "../../api/users"
+import {getterPublic, setter, setterPublic, userEndpoints} from "../../api/users"
 import {Accepted, Rejected} from "../../components/Plus"
 
 const Users = () => {
