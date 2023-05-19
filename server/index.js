@@ -34,7 +34,7 @@ DB.once("open", () => {
 app.use(morgan("tiny"))
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["https://brynks-v1.vercel.app"],
     methods: ["GET", "POST"],
     credentials: true,
   })
