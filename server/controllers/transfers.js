@@ -72,6 +72,7 @@ exports.verifyUser = async (req, res, next) => {
 exports.getAllTransactions = async (req, res, next) => {
 	try {
 		const userId = req.body.userId
+		console.log(userId)
 		const tx = await Transaction.find({
 			$or: [{sender: userId}, {receiver: userId}],
 		})

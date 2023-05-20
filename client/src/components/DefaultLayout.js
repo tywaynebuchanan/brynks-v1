@@ -77,7 +77,7 @@ const DefaultLayout = ({children}) => {
 		//     path: "/login"
 		// },
 	]
-	const [removeCookie] = useCookies()
+	const [cookies,removeCookie] = useCookies([])
 	const Logout = () => {
 		removeCookie('jwt');
         navigate("/login")

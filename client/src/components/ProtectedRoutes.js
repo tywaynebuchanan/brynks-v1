@@ -34,6 +34,7 @@ const ProtectedRoutes = ({ children }) => {
             navigate("/login");
             message.error("You have been logged out");
           } else {
+            // navigate("/")
             dispatch(SetUser(data.user));
             console.log(data.user);
           }

@@ -51,6 +51,7 @@ const Users = () => {
 	}
 
 	const columns = [
+		
 		{
 			title: "Registed On",
 			dataIndex: "date",
@@ -106,6 +107,8 @@ const Users = () => {
 			render: (text, record) => {
 				return (
 					<div className='flex gap-1'>
+
+					
 						{record.isVerified ? (
 							<button
 								className='primary-outlined-btn'
